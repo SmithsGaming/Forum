@@ -4,7 +4,7 @@
 {
     <li class="dropdown">
         <a href="#" class="dropdown-toggle mytoolslink" data-toggle="dropdown">
-            @Html.LanguageString("SideBox.MyTools")
+            @User.Identity.Name
             @if (Model.NewPrivateMessageCount > 0)
             {
                 <span class="badge">@Model.NewPrivateMessageCount</span>
