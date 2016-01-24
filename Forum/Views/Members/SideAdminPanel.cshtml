@@ -49,5 +49,5 @@ else
         </li>
     }
 
-    <li>@Html.ActionLink(Html.LanguageString("LogOn.LogOff"), "LogOff", "Members")</li>
+    <li><a href="@Url.Action("LogOff", "Members")"> <span class="glyphicon glyphicon-log-out"></span> @Html.LanguageString("LogOn.LogOff")</a></li>
 }
