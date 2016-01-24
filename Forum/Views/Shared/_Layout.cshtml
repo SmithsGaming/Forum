@@ -40,12 +40,12 @@
 </head>
 
 <body class="@TempData[AppConstants.GlobalClass].ToString() loggedin-@(User.Identity.IsAuthenticated.ToString().ToLower())">
-    
+
     <nav class="pushy pushy-left">
         <ul>
             @if (User.Identity.IsAuthenticated)
             {
-                @Html.Action("SideAdminPanel", "Members", new { isDropDown  = false})
+                @Html.Action("SideAdminPanel", "Members", new { isDropDown = false })
             }
             else
             {
@@ -59,7 +59,7 @@
             @Html.Partial("SubNavigation")
         </ul>
     </nav>
-    <div class="site-overlay"></div>    
+    <div class="site-overlay"></div>
 
     <header>
 
@@ -72,13 +72,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                        <img src="@Url.Content(theme.ThemePath + "/content/images/logo.png")" alt="@Html.Lang("Site.MvcForum")" class="logoimg"/>                        
-                    </a>
+                    <style>
+                        .navbar-default .navbar-brand {
+                            color: #fff;
+                        }
+                    </style>
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">SmithsModding Forum</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="mvcforum-nav">
-    
                     <ul class="nav navbar-nav navbar-right">
                         @if (!User.Identity.IsAuthenticated)
                         {
@@ -87,14 +89,12 @@
                                 <li><a href="@Url.Action("Register", "Members")"><span class="glyphicon glyphicon-user"></span> @Html.LanguageString("Layout.Nav.Register")</a></li>
                             }
                             <li><a href="@Url.Action("LogOn", "Members")"><span class="glyphicon glyphicon-log-in"></span> @Html.LanguageString("Layout.Nav.Logon")</a></li>
-                        }                        
+                        }
                         @if (User.Identity.IsAuthenticated)
                         {
                             @Html.Action("SideAdminPanel", "Members", new { isDropDown = true })
                         }
                     </ul>
-
-
                 </div>
             </div>
         </nav>
@@ -158,6 +158,6 @@
     @if (!string.IsNullOrEmpty(Html.Settings().CustomFooterCode))
     {
         @Html.Raw(Html.Settings().CustomFooterCode)
-    }    
+    }
 </body>
 </html>
